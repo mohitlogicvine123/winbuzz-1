@@ -20,40 +20,42 @@ tailwind.config = {
 
 // offcanvas navbar
 function toggleMenu() {
-    const offCanvas = document.getElementById('offcanvasMenu');
-    const content = offCanvas.querySelector('div');
-    offCanvas.classList.toggle('hidden');
-    offCanvas.classList.toggle('opacity-0');
-    offCanvas.classList.toggle('opacity-100');
-    offCanvas.classList.toggle('pointer-events-none');
-    content.classList.toggle('-translate-x-full');
-    content.classList.toggle('translate-x-0');
-    if (offCanvas.classList.contains('opacity-100')) {
-        document.body.style.overflow = 'hidden';  
-    } 
-    else {
-        document.body.style.overflow = '';  
+    const menu = document.getElementById("offcanvasMenu");
+    const panel = menu.querySelector("div");
+
+    if (menu.classList.contains("show-menu")) {
+      menu.classList.remove("show-menu");
+      panel.classList.remove("show-panel");
+      setTimeout(() => menu.classList.add("hidden"), 500);
+    } else {
+      menu.classList.remove("hidden");
+      setTimeout(() => {
+        menu.classList.add("show-menu");
+        panel.classList.add("show-panel");
+      }, 10);
     }
 }
-function closeMenu(event) {
-    const offCanvas = document.getElementById('offcanvasMenu');
-    if (!event.target.closest('div.w-64')) {  
-    toggleMenu();
-    }
+
+function closeMenu(e) {
+const menu = document.getElementById("offcanvasMenu");
+const panel = menu.querySelector("div");
+
+if (e.target === menu) {
+    menu.classList.remove("show-menu");
+    panel.classList.remove("show-panel");
+    setTimeout(() => menu.classList.add("hidden"), 500);
+}
 }
 
 
 // faq js
 const accordionItems = document.querySelectorAll('.accordion-item');
-
 accordionItems.forEach(item => {
     const header = item.querySelector('.accordion-header');
     const content = item.querySelector('.accordion-content');
     const icon = header.querySelector('[data-accordion-icon]');
-
     header.addEventListener('click', () => {
         const isExpanded = header.getAttribute('aria-expanded') === 'true';
-
         accordionItems.forEach(otherItem => {
             if (otherItem !== item) {
                 const otherHeader = otherItem.querySelector('.accordion-header');
@@ -65,7 +67,6 @@ accordionItems.forEach(item => {
                 otherHeader.classList.remove('bg-gray-200', 'text-black'); // Reset color
             }
         });
-
         content.classList.toggle('hidden');
         icon.classList.toggle('rotate-180');
         header.setAttribute('aria-expanded', !isExpanded);
@@ -73,3 +74,28 @@ accordionItems.forEach(item => {
         header.classList.toggle('text-black', !isExpanded); // Change text color when active
     });
 });
+
+
+// search bar 
+window.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById('searchOverlay');
+
+    // make functions global
+    window.openSearch = function () {
+      overlay.classList.remove('opacity-0', 'scale-90', 'pointer-events-none');
+      overlay.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+      document.body.classList.add('overflow-hidden');
+    };
+
+    window.closeSearch = function () {
+      overlay.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+      overlay.classList.add('opacity-0', 'scale-90', 'pointer-events-none');
+      document.body.classList.remove('overflow-hidden');
+    };
+
+    // close overlay on background click
+    overlay.addEventListener("click", () => {
+      closeSearch();
+    });
+  });
+  

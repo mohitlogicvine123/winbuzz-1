@@ -1,3 +1,62 @@
-.custom-shape {
-    border-radius: 51% 49% 93% 7% / 57% 72% 28% 43%;
+.swiper-pagination-bullet-active {
+  background-color: #DD2413;
+}
+
+
+.blog-detail-content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #1b1b1b;
+  margin-bottom: 12px;
+}
+.blog-detail-content h2 {
+  font-size: 26px;
+  color: #1b1b1b;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.blog-detail-content h3 {
+  font-size: 21px;
+  color: #1b1b1b;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.blog-detail-content h4 {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #1b1b1b;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+@media (max-width:1023px){
+  .blog-detail-content p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 10px;
   }
+  .blog-detail-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .blog-detail-content h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+  }
+  .blog-detail-content h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width:640px){
+  .blog-detail-content p {
+    font-size: 14px;
+  }
+  .blog-detail-content h2 {
+    font-size: 21px;
+  }
+  .blog-detail-content h3 {
+    font-size: 18px;
+  }
+}

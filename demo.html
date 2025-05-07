@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Offcanvas Menu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .show-menu {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    .show-panel {
+      transform: translateX(0) !important;
+    }
+  </style>
+</head>
+<body class="relative">
+
+<!-- Toggle Menu Button -->
+<button onclick="toggleMenu()" class="p-2 m-4 bg-blue-600 text-white rounded">Open Menu</button>
+
+<!-- Offcanvas Menu -->
+<div id="offcanvasMenu" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden opacity-0 pointer-events-none transition-all duration-500 ease-in-out" onclick="closeMenu(event)">
+  <div class="w-[320px] bg-white h-full transform -translate-x-full transition-transform duration-500 ease-in-out" onclick="event.stopPropagation()">
+    <!-- Close Button -->
+    <div class="p-4 border-b text-end h-[52px] flex items-end justify-end">
+      <button class="text-gray-600 text-xl" aria-label="close" onclick="toggleMenu()">
+        ✕
+      </button>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="py-3 overflow-y-auto h-[calc(100%-52px)]">
+      <ul>
+        <li><a href="#" class="block text-sm text-[#333] px-4 py-3 hover:bg-[#eee] w-full transition-all hover:text-blue-600">Lotus365 Login</a></li>
+        <li><a href="#" class="block text-sm text-[#333] px-4 py-3 hover:bg-[#eee] w-full transition-all hover:text-blue-600">Lotus365 App</a></li>
+        <li><a href="#" class="block text-sm text-[#333] px-4 py-3 hover:bg-[#eee] w-full transition-all hover:text-blue-600">Lotus365 Vip</a></li>
+        <li><a href="https://lotus36.in/inplay" target="_blank" class="block text-sm text-[#333] px-4 py-3 hover:bg-[#eee] w-full transition-all hover:text-blue-600">Lotus365 Register</a></li>
+
+        <!-- Dropdown: Lotus365 India -->
+        <li class="flex flex-col relative">
+          <input id="Lotus365india" class="peer/Lotus365india hidden" type="checkbox"/>
+          <label for="Lotus365india" class="text-sm text-[#333] px-4 py-3 hover:bg-[#eee] cursor-pointer w-full flex justify-between items-center transition-all hover:text-blue-600">
+            Lotus365 India
+            <svg xmlns="http://www.w3.org/2000/svg" height="12" viewBox="0 0 512 512" fill="#333"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </label>
+          <div class="hidden peer-checked/Lotus365india:block bg-white p-2">
+            <ul class="bg-[#eee]">
+              <li><a href="#" class="block text-[12.5px] px-4 py-2.5 text-[#333] hover:before:w-[3px] border-b relative before:absolute before:left-0 before:top-0 before:h-full before:w-[0px] before:bg-blue-600 before:transition-all before:duration-300">Lotus365 India</a></li>
+              <li><a href="#" class="block text-[12.5px] px-4 py-2.5 text-[#333] hover:before:w-[3px] border-b relative before:absolute before:left-0 before:top-0 before:h-full before:w-[0px] before:bg-blue-600 before:transition-all before:duration-300">Lotus365 Online</a></li>
+              <li><a href="#" class="block text-[12.5px] px-4 py-2.5 text-[#333] hover:before:w-[3px] border-b relative before:absolute before:left-0 before:top-0 before:h-full before:w-[0px] before:bg-blue-600 before:transition-all before:duration-300">Lotus365 Win</a></li>
+              <li><a href="#" class="block text-[12.5px] px-4 py-2.5 text-[#333] hover:before:w-[3px] border-b relative before:absolute before:left-0 before:top-0 before:h-full before:w-[0px] before:bg-blue-600 before:transition-all before:duration-300">Lotus365 Aviator</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Dropdown: Blog -->
+        <li class="flex flex-col relative">
+          <input id="blog" class="peer/blog hidden" type="checkbox"/>
+          <label for="blog" class="text-sm text-[#333] px-4 py-3 hover:bg-[#eee] cursor-pointer w-full flex justify-between items-center transition-all hover:text-blue-600">
+            Blog
+            <svg xmlns="http://www.w3.org/2000/svg" height="12" viewBox="0 0 512 512" fill="#333"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </label>
+          <div class="hidden peer-checked/blog:block bg-white p-2">
+            <ul class="bg-[#eee]">
+              <li><a href="#" class="block text-[12.5px] px-4 py-2.5 text-[#333] hover:before:w-[3px] border-b relative before:absolute before:left-0 before:top-0 before:h-full before:w-[0px] before:bg-blue-600 before:transition-all before:duration-300">Betting Tips</a></li>
+              <li><a href="#" class="block text-[12.5px] px-4 py-2.5 text-[#333] hover:before:w-[3px] border-b relative before:absolute before:left-0 before:top-0 before:h-full before:w-[0px] before:bg-blue-600 before:transition-all before:duration-300">
+                Game Tips
+                <span class="text-[#747272] mt-0.5 block text-[11.5px] leading-[22px]">Boost your online betting game with our top tips and strategies. Our blog covers everything from basic advice to advanced techniques, helping you refine your approach and enhance your chances of success. Get ready to bet smarter and win more.</span>
+              </a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Add more dropdown sections below if needed -->
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("offcanvasMenu");
+    const panel = menu.querySelector("div");
+
+    if (menu.classList.contains("show-menu")) {
+      menu.classList.remove("show-menu");
+      panel.classList.remove("show-panel");
+      setTimeout(() => menu.classList.add("hidden"), 500);
+    } else {
+      menu.classList.remove("hidden");
+      setTimeout(() => {
+        menu.classList.add("show-menu");
+        panel.classList.add("show-panel");
+      }, 10);
+    }
+  }
+
+  function closeMenu(e) {
+    const menu = document.getElementById("offcanvasMenu");
+    const panel = menu.querySelector("div");
+
+    if (e.target === menu) {
+      menu.classList.remove("show-menu");
+      panel.classList.remove("show-panel");
+      setTimeout(() => menu.classList.add("hidden"), 500);
+    }
+  }
+</script>
+
+</body>
+</html>
